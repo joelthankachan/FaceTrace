@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FaceTrace — Face Recognition</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+</head>
+
+<body>
+
+    <!-- ── Header ──────────────────────────────────────────────── -->
+    <header>
+        <div class="header-left">
+            <h1>FaceTrace</h1>
+            <p>Face Recognition using VGG16 + Machine Learning</p>
+        </div>
+        <div class="header-right">
+            <span class="status-dot"></span>
+            <span class="status-text">System Online</span>
+        </div>
+    </header>
+
+
+    <!-- ── Main layout ─────────────────────────────────────────── -->
+    <main class="container">
+
+        <!-- LEFT PANEL — upload and webcam input -->
+        <section class="panel">
+
+            <div class="card">
+                <h2 class="card-title">Upload a Photo</h2>
+
+                <!-- drag and drop area — inspired by codebasics UI structure -->
+                <div class="drop-zone" id="drop-zone">
+                    <div class="upload-icon-wrap">&#128247;</div>
+                    <p class="drop-main-text">Drag &amp; drop an image here</p>
+                    <p class="sub-text">or <span class="link-text">click to browse</span></p>
+                    <p class="sub-text">JPG and PNG supported</p>
+                    <input type="file" id="file-input" accept="image/*">
+                </div>
+
+                <!-- preview — hidden until a file is chosen -->
+                <div class="preview-box" id="preview-box">
+                    <img id="preview-img" alt="Preview">
+                    <button class="btn-clear" onclick="clearImage()">&#10005; Clear</button>
+                </div>
+
+                <!-- webcam divider -->
+                <div class="or-divider">
+                    <span>or use your webcam</span>
+                </div>
+
+                <!-- webcam video element -->
+                <div class="webcam-box" id="webcam-box">
+                    <video id="webcam-video" autoplay playsinline></video>
+                    <canvas id="capture-canvas"></canvas>
+                </div>
+
+                <!-- captured image preview -->
+                <div class="preview-box" id="webcam-preview-box">
+                    <img id="webcam-preview-img" alt="Captured photo">
+                    <button class="btn-clear" onclick="clearWebcamCapture()">&#10005; Clear</button>
+                </div>
+
+                <!-- webcam control buttons -->
+                <div class="webcam-buttons">
+                    <button class="btn btn-outline" id="start-btn" onclick="startWebcam()">
+                        Start Camera
+                    </button>
+                    <button class="btn btn-outline" id="capture-btn"
+                            onclick="capturePhoto()" disabled>
+                        Capture
+                    </button>
+                    <button class="btn btn-outline" id="stop-btn"
+                            onclick="stopWebcam()" disabled>
+                        Stop
+                    </button>
+                </div>
+
+                <!-- predict and reset buttons -->
+                <button class="btn btn-primary" id="predict-btn"
+                        onclick="predict()" disabled>
+                    Identify Person
+                </button>
+                <button class="btn btn-secondary" onclick="resetAll()">
+                    Reset
+                </button>
+            </div>
+
+
+            <!-- known identities card -->
+            <div class="card" style="margin-top: 20px;">
+                <h2 class="card-title">Known Identities (10)</h2>
+                <p class="sub-text" style="margin-bottom: 14px;">
+                    The model is trained on these 10 political figures from the LFW dataset.
+                    Any other face is returned as <strong>Unknown</strong>.
+                </p>
+                <div class="identity-chips" id="identity-chips">
+                    <!-- filled automatically by app.js on page load -->
+                </div>
+                <div class="info-note">
+                    Predictions below the confidence threshold are rejected as Unknown
+                    to prevent false identifications.
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- RIGHT PANEL — result display -->
+        <section class="panel">
+            <div class="card result-card">
+                <h2 class="card-title">Recognition Result</h2>
+
+                <!-- shown before anything is submitted -->
+                <div class="placeholder" id="placeholder">
+                    <div class="placeholder-icon">&#128269;</div>
+                    <p>Upload or capture a face image to identify the person.</p>
+                </div>
+
+                <!-- loading spinner while server processes the image -->
+                <div class="spinner-box" id="spinner-box">
+                    <div class="spinner"></div>
+                    <p>Analysing face&hellip;</p>
+                </div>
+
+                <!-- result — hidden until prediction returns -->
+                <div class="result-section" id="result-section">
+
+                    <div class="predicted-name" id="predicted-name"></div>
+                    <div class="face-badge" id="face-badge"></div>
+
+                    <div class="confidence-row">
+                        <span>Model Confidence</span>
+                        <span class="confidence-value" id="confidence-value"></span>
+                    </div>
+
+                    <hr class="divider-line">
+
+                    <p class="section-label">All Class Probabilities</p>
+                    <div id="prob-bars"></div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- ── Footer ──────────────────────────────────────────────── -->
+    <footer>
+        <p>FaceTrace — Evaluating Pre-trained Facial Embeddings for Face Recognition on Limited Hardware</p>
+        <p>MSc Data Science &nbsp;|&nbsp; Joel Thankachan A00047766 &nbsp;|&nbsp; Supervisor: Mohammad Javaheri</p>
+
+    </footer>
+
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+
+</body>
+</html>
