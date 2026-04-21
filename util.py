@@ -23,7 +23,7 @@ DNN_WEIGHTS     = r"artifacts/res10_300x300_ssd_iter_140000.caffemodel"
 
 # confidence threshold — predictions below this return "Unknown"
 # this value was determined from the FAR/FRR analysis in the notebook
-REJECTION_THRESHOLD = 0.45
+REJECTION_THRESHOLD = 0.829
 
 
 def load_models():
