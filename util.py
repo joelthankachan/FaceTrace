@@ -21,7 +21,7 @@ CLASS_DICT_PATH = r"artifacts/class_dictionary.json"
 DNN_PROTO       = r"artifacts/deploy.prototxt"
 DNN_WEIGHTS     = r"artifacts/res10_300x300_ssd_iter_140000.caffemodel"
 
-# confidence threshold — predictions below this return "Unknown"
+# confidence threshold — predictions below this return "Unknown Person"
 # this value was determined from the FAR/FRR analysis in the notebook
 REJECTION_THRESHOLD = 0.829
 
