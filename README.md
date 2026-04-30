@@ -259,9 +259,7 @@ Key references (full list in the project report):
 
 ## Author
 
-**Joel Thankachan** — MSc Data Science, University of Roehampton  
-Supervised by Mohammad Javaheri  
-Submitted: April 2026
+**Joel Thankachan** — Data Science Project,
 
 ---
 
