@@ -27,7 +27,7 @@ The pipeline combines a **frozen VGG16 convolutional network** (pre-trained on I
 
 ## Demo
 
-![FaceTrace UI — Hugo Chavez identified at 99.5% confidence](docs/demo_screenshot.png)
+![FaceTrace UI — Hugo Chavez identified at 99.5% confidence](docs/demo_screenshot.jpg)
 
 > The deployed interface shows the predicted identity, model confidence, a face-detected badge, and the full per-class probability distribution.
 
