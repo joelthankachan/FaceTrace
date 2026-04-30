@@ -10,7 +10,7 @@
   <img src="https://img.shields.io/badge/License-Academic-yellow"/>
 </p>
 
-> **MSc Data Science Capstone Project — University of Roehampton**
+> **Data Science Capstone Project — **
 > Identifying political figures using frozen VGG16 embeddings and classical ML classifiers, deployed as a Flask web application.
 
 ---
