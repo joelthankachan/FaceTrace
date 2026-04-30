@@ -10,7 +10,7 @@
   <img src="https://img.shields.io/badge/License-Academic-yellow"/>
 </p>
 
-> **Data Science Capstone Project — **
+> **Data Science Capstone Project —**
 > Identifying political figures using frozen VGG16 embeddings and classical ML classifiers, deployed as a Flask web application.
 
 ---
